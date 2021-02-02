@@ -1,31 +1,8 @@
-// have to destructure the named export from lib
-import {
-  assignLetterGrade,
-  curvedScore,
-  getLastName,
-  studentData,
-} from "./lib";
+import { senatorsData } from "./lib";
 
-// get a list of all student last names and ids
-// only those that scored below 70
-const lowScores = studentData
-  .filter(({ score }) => score <= 70)
-  .map(({ name, id }) => ({
-    lastName: getLastName(name),
-    id,
-  }));
+// TODO we need to make a list of all female senators to call them and invite to a special event (we need phone and name)
 
-// TODO: map over our student and add a letter grade to the data
-const scoresWithLetterGrades = studentData.map((student) => {
-  const ret = { letterGrade: assignLetterGrade(student.score), ...student };
+// TODO Get a list of jut the name field from the senators if they were born since 1960
+const youngSenators = senatorsData.map(({ person }) => ({ name: person.name }));
 
-  return ret;
-});
-console.log(scoresWithLetterGrades);
-
-const curvedScores = studentData.map((student) => ({
-  curvedScore: curvedScore(student.score, 10),
-  ...student,
-}));
-
-console.log(curvedScores);
+console.log(youngSenators);
