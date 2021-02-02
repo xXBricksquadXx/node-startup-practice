@@ -1,24 +1,8 @@
 // Have to destructure the named export from lib
-import { senatorsData } from "./lib";
+import { rickMorty } from "./lib";
 
-// TODO create new array {fullNickname: 'michael' 'mike' crapo' link' twitterid} - "Democrats"
+const characterList = rickMorty
+  .filter(({ origin }) => origin.name === "Earth (C-137)")
+  .map(({ name }) => ({ name }));
 
-const demSenators = senatorsData
-  .filter(({ party }) => party === "Democrat")
-  .map(
-    ({
-      person: {
-        firstname: firstName,
-        nickname: nickName,
-        lastname: lastName,
-        link,
-        twitterid: twitter,
-      },
-    }) => ({
-      fullNickName: `${firstName} ${nickName} ${lastName}`,
-      link,
-      twitter: twitter || "No twitter found!", // short circuit for no twitter
-    })
-  );
-
-console.log(demSenators);
+console.log(characterList);
