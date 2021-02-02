@@ -18,4 +18,6 @@ export const assignLetterGrade = (score) => {
   return "F";
 };
 
+export const curveScore = (score, curve) => score + curve;
+
 export const getLastName = (name) => name.split(" ")[1];
