@@ -17,7 +17,7 @@ const demSenators = senatorsData
     }) => ({
       fullNickName: `${firstName} ${nickName} ${lastName}`,
       link,
-      twitter,
+      twitter: twitter || "No twitter found!", // short circuit for no twitter
     })
   );
 
