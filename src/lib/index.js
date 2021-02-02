@@ -1,6 +1,6 @@
 // Re-exporting out whatever 'data' exports out as default.
 // Assigning it the name 'studentData'
-export { default as senatorsData } from "./senators-data";
+export { default as rickMorty } from "./rick-morty";
 
 export const assignLetterGrade = (score) => {
   if (score > 90) {
