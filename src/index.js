@@ -1,8 +1,16 @@
-// Have to destructure the named export from lib
-import { rickMorty } from "./lib";
+import { rickMorty, sliceStringToEnd } from "./lib";
 
-const characterList = rickMorty
-  .filter(({ origin }) => origin.name === "Earth (C-137)")
-  .map(({ name }) => ({ name }));
+const episodeURLEndings = rickMorty
+  .filter(({ gender }) => gender === "Male")
+  .map(({ name, episode: episodes }) => {
+    const slicedEpisodes = episodes.map((episode) =>
+      sliceStringToEnd(episode, "episode")
+    );
 
-console.log(characterList);
+    return {
+      name,
+      episodes: slicedEpisodes,
+    };
+  });
+
+console.log(episodeURLEndings);
