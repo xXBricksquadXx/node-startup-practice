@@ -1,16 +1,15 @@
-import { rickMorty, sliceStringToEnd } from "./lib";
+import { rickMorty } from "./lib";
 
+const createFigureHTML = (figcaption, src) => `
+<figure>
+<img src = "${src} " alt="" />
+<figcaption>${figcaption}</figcaption>
+</figure>
+`;
 const episodeURLEndings = rickMorty
-  .filter(({ gender }) => gender === "Male")
-  .map(({ name, episode: episodes }) => {
-    const slicedEpisodes = episodes.map((episode) =>
-      sliceStringToEnd(episode, "episode")
-    );
-
-    return {
-      name,
-      episodes: slicedEpisodes,
-    };
-  });
+  // A 'filter' uses a PREDICATE callback Function
+  .filter(({ gender }) => gender === "Female")
+  .map(({ name, image }) => createFigureHTML(name, image))
+  .join("\n");
 
 console.log(episodeURLEndings);
