@@ -1,6 +1,6 @@
 // Re-exporting out whatever 'data' exports out as default.
 // Assigning it the name 'studentData'
-export { default as studentData } from "./student-data";
+export { default as senatorsData } from "./senators-data";
 
 export const assignLetterGrade = (score) => {
   if (score > 90) {
@@ -18,6 +18,8 @@ export const assignLetterGrade = (score) => {
   return "F";
 };
 
-export const curveScore = (score, curve) => score + curve;
-
 export const getLastName = (name) => name.split(" ")[1];
+
+export const getBirthYear = (bday) => Number(bday.slice(0, 4));
+
+export const curveScore = (score, curve) => score + curve;
