@@ -23,3 +23,6 @@ export const getLastName = (name) => name.split(" ")[1];
 export const getBirthYear = (bday) => Number(bday.slice(0, 4));
 
 export const curveScore = (score, curve) => score + curve;
+
+export const sliceStringToEnd = (origStr, whereToSliceStr) =>
+  origStr.slice(origStr.indexOf(whereToSliceStr));
