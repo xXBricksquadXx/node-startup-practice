@@ -18,6 +18,7 @@ export const assignLetterGrade = (score) => {
   return "F";
 };
 
+export const calcAvg = (total, numofNums) => total / numofNums;
 export const getLastName = (name) => name.split(" ")[1];
 
 export const getBirthYear = (bday) => Number(bday.slice(0, 4));
