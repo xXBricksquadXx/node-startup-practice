@@ -1,15 +1,18 @@
-import { rickMorty } from "./lib";
+import { studentData } from "./lib";
 
-const createFigureHTML = (figcaption, src) => `
-<figure>
-<img src = "${src} " alt="" />
-<figcaption>${figcaption}</figcaption>
-</figure>
+const createFigureHTML = (student, string, registration) => `
+<section>
+<h2>${student}</h2>
+<ul>
+<li class="student-score">${string}</li>
+<li class="student-id">${registration}</li>
+</ul>
+</section>
 `;
-const episodeURLEndings = rickMorty
+const aListGroup = studentData
   // A 'filter' uses a PREDICATE callback Function
-  .filter(({ gender }) => gender === "Female")
-  .map(({ name, image }) => createFigureHTML(name, image))
+  .filter(({ score }) => score >= 70)
+  .map(({ name, score, id }) => createFigureHTML(name, score, id))
   .join("\n");
 
-console.log(episodeURLEndings);
+console.log(aListGroup);
