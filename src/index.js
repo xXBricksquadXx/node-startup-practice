@@ -1,10 +1,10 @@
 import { studentData } from "./lib";
 
-const createFigureHTML = (student, string, registration) => `
+const createSectionHTML = (student, str, registration) => `
 <section>
 <h2>${student}</h2>
 <ul>
-<li class="student-score">${string}</li>
+<li class="student-score">${str}</li>
 <li class="student-id">${registration}</li>
 </ul>
 </section>
@@ -12,7 +12,7 @@ const createFigureHTML = (student, string, registration) => `
 const aListGroup = studentData
   // A 'filter' uses a PREDICATE callback Function
   .filter(({ score }) => score >= 70)
-  .map(({ name, score, id }) => createFigureHTML(name, score, id))
+  .map(({ name, score, id }) => createSectionHTML(name, score, id))
   .join("\n");
 
 console.log(aListGroup);
