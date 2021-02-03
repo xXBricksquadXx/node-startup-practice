@@ -1,18 +1,16 @@
-import { studentData } from "./lib";
+import { assignLetterGrade, studentData } from "./lib";
 
-const createSectionHTML = (student, str, registration) => `
-<section>
-<h2>${student}</h2>
-<ul>
-<li class="student-score">${str}</li>
-<li class="student-id">${registration}</li>
-</ul>
-</section>
-`;
-const aListGroup = studentData
-  // A 'filter' uses a PREDICATE callback Function
-  .filter(({ score }) => score >= 70)
-  .map(({ name, score, id }) => createSectionHTML(name, score, id))
-  .join("\n");
+const scoresWithLetterGrades = studentData.map((student) => ({
+  ...student,
+  grade: assignLetterGrade(student.score),
+}));
 
-console.log(aListGroup);
+const testAvg =
+  studentData.reduce((total, student) => {
+    console.log(student, "here is the current student");
+    console.log("here is the current score", student.score);
+    console.log("here is the total ", total);
+    return total + student.score;
+  }, 0) / studentData.length;
+
+console.log(testAvg);
