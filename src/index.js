@@ -6,8 +6,9 @@ const studentDataWithGrades = studentData.map((student) => ({
 }));
 
 const gradeTally = studentDataWithGrades.reduce((tally, { grade }) => {
-  tally[grade] = tally[grade] ? (tally[grade] += 1) : 1;
-  return tally;
+  const ret = { ...tally };
+  ret[grade] = tally[grade] ? tally[grade] + 1 : 1;
+  return ret;
 }, {});
 
 console.log(gradeTally);
