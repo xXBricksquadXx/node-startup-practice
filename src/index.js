@@ -5,4 +5,8 @@ const studentDataWithGrades = studentData.map((student) => ({
   letterGrade: assignLetterGrade(student.score),
 }));
 
-console.log(studentDataWithGrades);
+const testAvg =
+  studentDataWithGrades.reduce((total, student) => {
+    console.log(student, "student");
+    return total + student.score;
+  }, 0) / studentDataWithGrades.length;
