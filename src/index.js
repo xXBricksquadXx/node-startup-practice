@@ -1,16 +1,13 @@
 import { assignLetterGrade, studentData } from "./lib";
 
-const scoresWithLetterGrades = studentData.map((student) => ({
+const studentDataWithGrades = studentData.map((student) => ({
   ...student,
   grade: assignLetterGrade(student.score),
 }));
 
-const testAvg =
-  studentData.reduce((total, student) => {
-    console.log(student, "here is the current student");
-    console.log("here is the current score", student.score);
-    console.log("here is the total ", total);
-    return total + student.score;
-  }, 0) / studentData.length;
+const gradeTally = studentDataWithGrades.reduce((tally, { grade }) => {
+  tally[grade] = tally[grade] ? (tally[grade] += 1) : 1;
+  return tally;
+}, {});
 
-console.log(testAvg);
+console.log(gradeTally);
