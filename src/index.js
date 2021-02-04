@@ -1,16 +1,14 @@
-import { moviesData } from "./lib";
+import { assignLetterGrade, studentData } from "./lib";
 
-const actorTally = moviesData
-  // Remove entries that have nothing details or that have an empty string for the 'cast'
-  .filter(({ details }) => details[0]?.cast)
-  .reduce((tally, { details }) => {
-    // Avoid mutation by spreading into a new object reference
-    const ret = { ...tally };
-    const { cast } = details[0];
-    cast.split(", ").forEach((name) => {
-      ret[name] = tally[name] ? tally[name] + 1 : 1;
-    });
-    return ret;
-  }, {});
+const studentDataWithGrades = studentData.map((student) => ({
+  ...student,
+  grade: assignLetterGrade(student.score),
+}));
 
-console.log(actorTally);
+const aStudents = studentDataWithGrades.filter(({ grade }) => grade === "A");
+
+const aStudentsAvg = (
+  aStudents.reduce((total, { score }) => total + score, 0) / aStudents.length
+).toFixed(2);
+
+console.log(aStudentsAvg);
